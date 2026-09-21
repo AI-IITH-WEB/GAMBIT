@@ -1,0 +1,667 @@
+﻿/* ===================================================================
+   GAMBIT Lab additions on top of the MindHaven skeleton.
+   The template's stock photography (SaaS UI mockups with fabricated
+   names, generic classroom/student stock photos) is not reused here
+   since none of it truthfully represents the lab. These rules replace
+   those image slots with icon/gradient/avatar treatments built from
+   the template's own --primary/--secondary/--tertiary/--quinary
+   palette, without altering the section skeleton itself.
+   =================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&display=swap');
+
+/* ---------- Main headings: serif typeface for an editorial/academic feel ---------- */
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+}
+
+/* ---------- GAMBIT Lab wordmark: kept sans-serif, unlike other headings ---------- */
+.sitename, .heading-large {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ---------- Page background: cool indigo tint instead of plain white ---------- */
+body {
+  background-color: #F2F3FA;
+}
+
+.scrolled .header {
+  background-color: #F2F3FA !important;
+}
+
+/* ---------- Nav links: dark underline draw-in + pressed-in feel on hover ---------- */
+.navmenu > ul > li > a {
+  position: relative;
+  border-radius: 6px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.navmenu > ul > li > a::after {
+  content: '';
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  bottom: 8px;
+  height: 2px;
+  background: #8A4A6E;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.navmenu > ul > li:hover > a::after {
+  transform: scaleX(1);
+}
+
+.navmenu > ul > li:hover > a {
+  transform: translateY(1px);
+  background-color: rgba(76, 29, 61, 0.12);
+  box-shadow: inset 0 2px 6px rgba(76, 29, 61, 0.35);
+}
+
+/* ---------- Current Research cards: diagonal shadow peeking out on hover ---------- */
+.service-item {
+  background: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+  transform: translate(-6px, -6px);
+  box-shadow: 14px 14px 30px rgba(0, 0, 0, 0.18);
+}
+
+/* ---------- Hero photo + real caption badge ---------- */
+.hero-photo-box {
+  position: relative;
+  max-width: 420px;
+}
+
+.hero-photo-box img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(47, 50, 125, 0.25);
+}
+
+.hero-photo-badge {
+  position: absolute;
+  left: -20px;
+  bottom: -20px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  padding: 14px 18px;
+  max-width: 260px;
+}
+
+.hero-photo-badge strong {
+  display: block;
+  color: var(--primary);
+  font-size: 14px;
+}
+
+.hero-photo-badge span {
+  color: var(--quaternary);
+  font-size: 12.5px;
+}
+
+/* ---------- About section: student/alumni teaser tiles (replace stock overlay photos) ---------- */
+.card-overlay-fill {
+  height: 100%;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 30px;
+}
+
+.card-overlay-fill.tile-students {
+  background: linear-gradient(135deg, var(--primary) 0%, #4d51b8 100%);
+}
+
+.card-overlay-fill.tile-alumni {
+  background: linear-gradient(135deg, var(--tertiary) 0%, #4a4a63 100%);
+}
+
+.card-overlay-fill i {
+  font-size: 34px;
+  margin-bottom: 14px;
+  color: var(--secondary);
+}
+
+/* ---------- About quote card (replaces the video/play-button block) ---------- */
+.about-quote {
+  position: relative;
+  padding: 1rem;
+}
+
+.about-quote::before {
+  content: '';
+  width: 100px;
+  height: 100px;
+  background-color: var(--quinary);
+  position: absolute;
+  border-radius: 20px;
+  top: -1rem;
+  left: -1rem;
+  z-index: 0;
+}
+
+.about-quote::after {
+  content: '';
+  width: 100px;
+  height: 100px;
+  background-color: var(--secondary);
+  position: absolute;
+  border-radius: 20px;
+  bottom: -1rem;
+  right: -1rem;
+  z-index: 0;
+}
+
+.about-quote-inner {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  padding: 40px 34px;
+  text-align: left;
+}
+
+.about-quote-inner i.fa-quote-left {
+  color: var(--quinary);
+  font-size: 26px;
+  margin-bottom: 14px;
+}
+
+.about-quote-inner p {
+  color: var(--tertiary);
+  font-size: 16px;
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: 16px;
+}
+
+.about-quote-inner .quote-name {
+  font-weight: 700;
+  color: var(--primary);
+  font-style: normal;
+}
+
+.about-quote-inner .quote-role {
+  font-weight: 400;
+  color: var(--quaternary);
+  font-size: 13.5px;
+  display: block;
+}
+
+/* ---------- Feature showcase: icon art panel (replaces product screenshots) ---------- */
+.feature-art {
+  width: 100%;
+  min-height: 260px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #EEF0FF 0%, #FBEFE0 100%);
+}
+
+.feature-art i {
+  font-size: 64px;
+  color: var(--primary);
+}
+
+.feature-art.art-alt {
+  background: linear-gradient(135deg, #FBEFE0 0%, #EAF9FC 100%);
+}
+
+.feature-art.art-alt i {
+  color: var(--secondary);
+}
+
+.feature-text-card {
+  width: 100%;
+  min-height: 260px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0px 8px 26px 0px #262D7614;
+  padding: 36px 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.feature-text-card .our-feature-sub-title {
+  margin-bottom: 14px;
+}
+
+/* ---------- People page: Current Students / Alumni, PhD then MTech, 2-per-row cards ---------- */
+.people-block {
+  padding: 14px 0 36px 0;
+}
+
+.people-block.alt {
+  background-color: #E7E9F5;
+}
+
+.people-block-heading {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.people-block-heading h2 {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.people-block-heading p {
+  color: var(--quaternary);
+  font-size: 15px;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.people-group-title {
+  color: var(--tertiary);
+  font-size: 24px;
+  font-weight: 700;
+  margin: 10px 0 10px 0;
+  padding-left: 14px;
+  border-left: 4px solid var(--secondary);
+}
+
+.person-card {
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0px 10px 26px 0px #262D7622;
+  overflow: hidden;
+  max-width: 250px;
+  height: calc(100% - 22px);
+  margin: 0 auto 22px auto;
+  border: 2px solid transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.person-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 34px rgba(47, 50, 125, 0.28);
+  border-color: var(--secondary);
+}
+
+.person-card .person-card-top {
+  background: linear-gradient(135deg, var(--primary) 0%, #4d51b8 100%);
+  padding: 24px 14px 44px;
+  display: flex;
+  justify-content: center;
+}
+
+.person-card .person-avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--primary);
+  border: 4px solid #fff;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.person-card .person-avatar i {
+  font-size: 52px;
+}
+
+.person-card .person-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.person-card .person-detail {
+  width: 100%;
+  background: #fff;
+  border-radius: 26px 26px 0 0;
+  margin-top: -26px;
+  padding: 24px 18px 20px;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.person-card h5 {
+  color: var(--tertiary);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.person-card .person-degree {
+  color: var(--quaternary);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 12.5px;
+  margin-bottom: 8px;
+}
+
+.person-card .person-field-label {
+  color: var(--secondary);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 12.5px;
+  margin-top: 6px;
+}
+
+.person-card .person-field-value {
+  color: var(--tertiary);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 12.5px;
+  line-height: 1.4;
+}
+
+.person-card .person-link {
+  display: inline-block;
+  margin-top: 16px;
+  color: #fff;
+  background: var(--primary);
+  border: none;
+  border-radius: 999px;
+  padding: 9px 26px;
+  font-weight: 600;
+  font-size: 13px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.person-card .person-link:hover {
+  background: var(--secondary);
+  color: #fff;
+}
+
+.person-card .person-pending {
+  display: inline-block;
+  margin-top: 16px;
+  color: var(--quaternary);
+  background: #fff;
+  border: 1.5px solid #D8D8E2;
+  border-radius: 999px;
+  padding: 9px 26px;
+  font-weight: 600;
+  font-size: 12.5px;
+}
+
+/* ---------- Publications page: papers co-authored with lab members, grouped by year ---------- */
+.publication-year-title {
+  color: var(--tertiary);
+  font-size: 24px;
+  font-weight: 700;
+  margin: 34px 0 16px 0;
+  padding-left: 14px;
+  border-left: 4px solid var(--secondary);
+}
+
+.publication-item {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0px 8px 22px 0px #262D7614;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  border: 2px solid transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.publication-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(76, 29, 61, 0.18);
+  border-color: var(--secondary);
+}
+
+.publication-item h5 {
+  color: var(--primary);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.publication-authors {
+  color: var(--quaternary);
+  font-size: 14px;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.publication-authors .lab-author {
+  color: var(--tertiary);
+  font-weight: 700;
+}
+
+.publication-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.publication-venue {
+  display: inline-block;
+  background: var(--quinary);
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 12.5px;
+  border-radius: 6px;
+  padding: 5px 14px;
+}
+
+.publication-link {
+  color: var(--secondary);
+  font-weight: 600;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.publication-link:hover {
+  text-decoration: underline;
+}
+
+.publication-note {
+  color: var(--quaternary);
+  font-size: 14.5px;
+  text-align: center;
+  max-width: 700px;
+  margin: 30px auto 0 auto;
+}
+
+/* ---------- Header: rectangular strip instead of the template's curved bottom edge; logo nudged toward the left edge ---------- */
+.header-section {
+  border-radius: 0;
+}
+
+.header .container-fluid {
+  padding-left: 0;
+}
+
+.header .logo {
+  margin-left: -24px;
+}
+
+.header .navmenu {
+  margin-right: -36px;
+}
+
+/* ---------- Sub-page title banner (multipage nav needs a header banner Mindhaven's single-page skeleton never had) ---------- */
+.page-head {
+  text-align: center;
+  padding-bottom: 24px;
+}
+
+.page-head h1 {
+  color: var(--primary);
+  font-size: 34px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* ---------- Dedicated supervisor section (own section right after hero) ---------- */
+.supervisor-section {
+  padding: 80px 0;
+}
+
+.supervisor-photo-box {
+  position: relative;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.supervisor-photo-box img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(47, 50, 125, 0.2);
+}
+
+.supervisor-detail h2 {
+  color: var(--primary);
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.supervisor-detail h6 {
+  color: var(--secondary);
+  font-size: 14.5px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.supervisor-tags {
+  margin-bottom: 20px;
+}
+
+.supervisor-tags span {
+  display: inline-block;
+  background: #D6DBF5;
+  color: var(--primary);
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin: 0 8px 8px 0;
+}
+
+.supervisor-detail p.bio {
+  color: var(--quaternary);
+  font-size: 15.5px;
+  line-height: 1.8;
+  margin-bottom: 22px;
+}
+
+.supervisor-links a {
+  display: inline-block;
+  margin-right: 24px;
+  margin-bottom: 8px;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  border-bottom: 2px solid var(--secondary);
+  padding-bottom: 2px;
+}
+
+.supervisor-links a i {
+  margin-right: 6px;
+  color: var(--secondary);
+}
+
+/* ---------- Compact supervisor block (People page only; section heading is untouched) ---------- */
+.supervisor-section.compact {
+  padding: 16px 0 8px 0;
+}
+
+.supervisor-section.compact .supervisor-photo-box {
+  max-width: 300px;
+}
+
+.supervisor-section.compact .supervisor-detail h2 {
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
+.supervisor-section.compact .supervisor-detail h6 {
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.supervisor-section.compact .supervisor-tags {
+  margin-bottom: 12px;
+}
+
+.supervisor-section.compact .supervisor-tags span {
+  font-size: 11px;
+  padding: 4px 10px;
+}
+
+.supervisor-section.compact .supervisor-detail p.bio {
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
+.supervisor-section.compact .supervisor-links a {
+  font-size: 12px;
+  margin-right: 18px;
+}
+
+/* ---------- Contact page ---------- */
+.contact-section h2 {
+  color: var(--primary);
+}
+
+.map-embed iframe {
+  width: 100%;
+  height: 280px;
+  border: 0;
+  border-radius: 14px;
+}
+
+.contact-form .form-control {
+  border: 1px solid #E1E1EE;
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 14.5px;
+  color: var(--tertiary);
+}
+
+.contact-form .form-control:focus {
+  border-color: var(--primary);
+  box-shadow: none;
+}
+
+.contact-form .subscribe-btn {
+  padding: 13px 30px;
+  font-weight: 600;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 767px) {
+  .hero-photo-box {
+    margin: 0 auto;
+  }
+
+  .supervisor-detail {
+    text-align: center;
+    margin-top: 30px;
+  }
+}
