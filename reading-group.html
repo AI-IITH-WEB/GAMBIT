@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="GAMBIT Lab reading group, IIT Hyderabad.">
+  <meta name="description" content="GAMBIT Lab weekly reading group, IIT Hyderabad: game theory, mechanism design, information design, AI in finance and mechanism design for agentic control.">
   <title>Reading Group | GAMBIT Lab</title>
   <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
   <link href="./assets/icons/fontawesome/css/fontawesome.min.css" rel="stylesheet">
@@ -12,8 +12,8 @@
   <link rel="stylesheet" href="./assets/plugin/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="./assets/plugin/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css">
   <link rel="stylesheet" href="./assets/plugin/aos/aos.css">
-  <link rel="stylesheet" href="./assets/css/style.css?v=3">
-  <link rel="stylesheet" href="./assets/css/lab-custom.css?v=3">
+  <link rel="stylesheet" href="./assets/css/style.css?v=5">
+  <link rel="stylesheet" href="./assets/css/lab-custom.css?v=5">
 </head>
 <body>
     <div class="header-section">
@@ -30,7 +30,6 @@
                   <li><a href="reading-group.html" class="active">Reading Group</a></li>
                   <li><a href="https://ai-iith-web.github.io/AIFES/" target="_blank" rel="noopener noreferrer">AIFES <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px;"></i></a></li>
                   <li><a href="publications.html">Publications</a></li>
-                  <li><a href="news.html">News</a></li>
                   <li><a href="resources.html">Resources</a></li>
                   <li><a href="contact.html">Contact</a></li>
                 </ul>
@@ -43,23 +42,29 @@
           </div>
        </div>
 
-        <div class="our-feature-section container-fluid container-xl position-relative mt-7 text-center pb-5 overflow-hidden">
-          <div class="row mt-5 ">
-            <div class="col-md-6 mb-5 mb-lg-0" data-aos="fade-right">
-              <div class="card border-0">
-                <div class="feature-art"><i class="fa-solid fa-comments"></i></div>
-              </div>
-            </div>
-            <div class="col-md-6 mb-5  mb-lg-0  text-start" data-aos="fade-left">
-                 <p class="our-feature-sub-title">Reading <span class="text-secondary">Group</span></p>
-                 <ul class="our-feature-class-room mt-4">
-                   <li><span class="icon-item d-flex align-items-center justify-content-center"><i class="fa-solid fa-users text-secondary fs-4"></i></span><span class="ms-4 text-quaternary">Students and the supervisor meet to discuss recent papers in game theory, mechanism design and machine learning.</span></li>
-                   <li><span class="icon-item d-flex align-items-center justify-content-center"><i class="fa-solid fa-chalkboard-user text-secondary fs-4"></i></span><span class="ms-4 text-quaternary">Presenters rotate through the lab, with open discussion encouraged from everyone.</span></li>
-                   <li><span class="icon-item d-flex align-items-center justify-content-center"><i class="fa-solid fa-calendar-days text-secondary fs-4"></i></span><span class="ms-4 text-quaternary">Schedule and current topics: coming soon.</span></li>
-                 </ul>
-            </div>
+        <section class="rg-section container-fluid container-xl" aria-labelledby="rg-intro-title">
+          <div class="rg-intro">
+            <h2 id="rg-intro-title" class="visually-hidden">About the reading group</h2>
+            <p>Students and the supervisor meet to read and discuss recent papers across the lab&rsquo;s research themes. Presenters rotate through the lab, and open discussion is encouraged from everyone.</p>
+            <div class="rg-meta" id="rg-meta"></div>
           </div>
-        </div>
+        </section>
+
+        <section class="rg-section container-fluid container-xl" aria-labelledby="rg-next-title">
+          <h2 class="rg-heading" id="rg-next-title">Up next</h2>
+          <div id="rg-next"></div>
+        </section>
+
+        <section class="rg-section container-fluid container-xl" aria-labelledby="rg-themes-title">
+          <h2 class="rg-heading" id="rg-themes-title">Themes</h2>
+          <div class="rg-themes" id="rg-themes"></div>
+        </section>
+
+        <section class="rg-section container-fluid container-xl pb-5" id="rg-archive" aria-labelledby="rg-past-title">
+          <h2 class="rg-heading" id="rg-past-title">Past sessions</h2>
+          <div class="rg-filters" id="rg-filters" role="group" aria-label="Filter past sessions by theme"></div>
+          <ul class="rg-list" id="rg-past"></ul>
+        </section>
 
         <footer class="footer text-center text-md-start mt-5">
           <div class="container">
@@ -87,6 +92,7 @@
     <script src="./assets/js/bootstrap.bundle.min.js"></script>
     <script src="./assets/plugin/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
     <script src="./assets/plugin/aos/aos.js"></script>
-    <script src="./assets/js/main.js?v=3"></script>
+    <script src="./assets/js/reading-group.js?v=1"></script>
+    <script src="./assets/js/main.js?v=5"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 /* ===================================================================
    GAMBIT Lab announcements
-   Shown on the Home page (latest few) and on the News page (all).
+   Shown on the Home page: the latest few, plus a 'Show all' button for the rest.
 
    HOW TO ADD AN ANNOUNCEMENT
    1. Copy one { ... }, block below and paste it at the TOP of the list
@@ -16,6 +16,12 @@
    =================================================================== */
 
 window.GAMBIT_ANNOUNCEMENTS = [
+  {
+    date: 'Oct 2026',
+    tag: 'Event',
+    title: 'AI Innovation Lab launched at IIT Hyderabad',
+    text: 'The AI Innovation Lab was officially launched at IIT Hyderabad on 7 October 2026. The lab focuses on Trustworthy AI for Finance, Economies and Society.'
+  },
   {
     date: 'Aug 2026',
     tag: 'Preprint',
@@ -61,6 +67,14 @@ window.GAMBIT_ANNOUNCEMENTS = [
     text: 'By Reshef Meir and Ganesh Ghalme.',
     link: 'https://arxiv.org/abs/2510.18062',
     linkText: 'Read on arXiv'
+  },
+  {
+    date: 'Oct 2025',
+    tag: 'Award',
+    title: 'Siddharth Shrivastava awarded the Google PhD Fellowship',
+    text: 'Congratulations to Siddharth Shrivastava, PhD student at GAMBIT Lab, on being awarded the prestigious Google PhD Fellowship.',
+    link: 'people.html#current-students',
+    linkText: 'Meet the lab'
   },
   {
     date: 'Jul 2025',
@@ -128,9 +142,39 @@ window.GAMBIT_ANNOUNCEMENTS = [
 
   document.querySelectorAll('[data-announcements]').forEach(list => {
     const limit = parseInt(list.dataset.limit, 10) || items.length;
-    list.replaceChildren(...items.slice(0, limit).map(renderItem));
+    const rendered = items.map(renderItem);
+    rendered.forEach((li, i) => { li.hidden = i >= limit; });
+    list.replaceChildren(...rendered);
     if (!items.length) {
       list.appendChild(el('li', 'ann-empty', 'No announcements yet — check back soon.'));
+    }
+
+    // Older items stay on the page behind a "Show all" toggle.
+    if (items.length > limit) {
+      if (!list.id) list.id = 'ann-list';
+      const btn = el('button', 'ann-toggle');
+      btn.type = 'button';
+      btn.setAttribute('aria-controls', list.id);
+      const label = el('span');
+      const ic = el('i', 'fa-solid fa-chevron-down');
+      ic.setAttribute('aria-hidden', 'true');
+      btn.append(label, ic);
+
+      const setOpen = open => {
+        rendered.forEach((li, i) => { if (i >= limit) li.hidden = !open; });
+        btn.setAttribute('aria-expanded', open);
+        label.textContent = open ? 'Show fewer' : 'Show all announcements (' + items.length + ')';
+      };
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') !== 'true';
+        setOpen(open);
+        if (!open) list.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      setOpen(false);
+
+      const wrap = el('div', 'ann-toggle-wrap');
+      wrap.appendChild(btn);
+      list.after(wrap);
     }
   });
 })();
