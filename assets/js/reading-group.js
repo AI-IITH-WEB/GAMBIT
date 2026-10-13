@@ -4,7 +4,7 @@
 
    WEEKLY UPDATE: add ONE block to `sessions` below (anywhere in the list;
    the page sorts by date). Sessions dated today or later appear under
-   "Up next"; earlier ones move to "Past sessions" automatically.
+   "Upcoming presentation"; earlier ones move to "Past sessions" automatically.
 
      {
        date: '2026-10-16',            // YYYY-MM-DD of the (first) session (required)
@@ -64,7 +64,7 @@ window.GAMBIT_READING_GROUP = {
     {
       date: '2026-09-29',
       weeks: 2,
-      theme: ['info', 'fin'],
+      theme: 'info',
       title: 'Information, Trade and Common Knowledge',
       authors: 'Paul Milgrom, Nancy Stokey',
       venue: 'Journal of Economic Theory, 1982',
