@@ -12,8 +12,8 @@
   <link rel="stylesheet" href="./assets/plugin/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="./assets/plugin/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css">
   <link rel="stylesheet" href="./assets/plugin/aos/aos.css">
-  <link rel="stylesheet" href="./assets/css/style.css?v=2">
-  <link rel="stylesheet" href="./assets/css/lab-custom.css?v=2">
+  <link rel="stylesheet" href="./assets/css/style.css?v=3">
+  <link rel="stylesheet" href="./assets/css/lab-custom.css?v=3">
 </head>
 <body>
     <div class="header-section">
@@ -43,19 +43,11 @@
           </div>
        </div>
 
-        <div class="our-feature-section container-fluid container-xl position-relative mt-7 text-center pb-5 overflow-hidden">
-          <div class="row">
-            <div class="col-md-6 mb-5 text-start" data-aos="flip-up">
-                <div class="feature-art"><i class="fa-solid fa-newspaper"></i></div>
-              </div>
-              <div class="col-md-6 mb-5 d-flex align-items-center justify-content-center " data-aos="flip-down">
-                <div class="feature-text-card text-start">
-                  <p class="our-feature-sub-title"><span class="text-secondary">News</span></p>
-                  <p class="text-quaternary">Announcements, awards and updates from GAMBIT Lab will be posted here soon.</p>
-                </div>
-              </div>
-          </div>
-        </div>
+        <section class="announcements-section container-fluid container-xl mt-5 pb-5" aria-label="All announcements">
+          <ul class="ann-list" data-announcements>
+            <li class="ann-empty">Loading announcements&hellip;</li>
+          </ul>
+        </section>
 
         <footer class="footer text-center text-md-start mt-5">
           <div class="container">
@@ -83,6 +75,7 @@
     <script src="./assets/js/bootstrap.bundle.min.js"></script>
     <script src="./assets/plugin/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
     <script src="./assets/plugin/aos/aos.js"></script>
-    <script src="./assets/js/main.js?v=2"></script>
+    <script src="./assets/js/announcements.js?v=1"></script>
+    <script src="./assets/js/main.js?v=3"></script>
 </body>
 </html>

@@ -846,6 +846,178 @@ img {
   margin-top: 3px;
 }
 
+/* ---------- Announcements (Home: latest few, News: all) - data in assets/js/announcements.js ---------- */
+.announcements-section {
+  padding-top: 64px;
+}
+
+.ann-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-bottom: 20px;
+}
+
+.ann-header h2 {
+  color: var(--primary);
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.ann-all {
+  color: var(--secondary);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.ann-all i {
+  font-size: 12px;
+  margin-left: 4px;
+  transition: transform 0.25s ease;
+}
+
+.ann-all:hover {
+  color: var(--primary);
+}
+
+.ann-all:hover i {
+  transform: translateX(4px);
+}
+
+.ann-list {
+  list-style: none;
+  margin: 0;
+  padding: 6px 28px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(38, 45, 118, 0.10);
+}
+
+.ann-item {
+  display: flex;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid #E6E8F3;
+}
+
+.ann-item:last-child {
+  border-bottom: 0;
+}
+
+.ann-date {
+  flex: 0 0 92px;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 14px;
+  padding-top: 2px;
+}
+
+.ann-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.ann-tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 2px 10px;
+  margin-bottom: 6px;
+  background: #E4E7F8;
+  color: var(--primary);
+}
+
+.ann-tag-people,
+.ann-tag-alumni {
+  background: #F6EEF3;
+  color: var(--secondary);
+}
+
+.ann-tag-award,
+.ann-tag-event,
+.ann-tag-talk {
+  background: #FFF2E1;
+  color: #7A4A12;
+}
+
+.ann-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--tertiary);
+  margin: 0 0 4px;
+}
+
+.ann-text {
+  color: var(--quaternary);
+  font-size: 15px;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.ann-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.ann-link i {
+  font-size: 12px;
+  transition: transform 0.25s ease;
+}
+
+.ann-link:hover {
+  color: var(--secondary);
+}
+
+.ann-link:hover i {
+  transform: translateX(4px);
+}
+
+.ann-empty {
+  color: var(--quaternary);
+  font-style: italic;
+  padding: 20px 0;
+}
+
+@media (max-width: 767px) {
+  .announcements-section {
+    padding-top: 40px;
+  }
+
+  .ann-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .ann-list {
+    padding: 4px 18px;
+  }
+
+  .ann-item {
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 0;
+  }
+
+  .ann-date {
+    flex-basis: auto;
+    padding-top: 0;
+  }
+
+  .ann-title {
+    font-size: 16px;
+  }
+}
+
 /* ---------- People page: horizontal profile cards (whole card is the link) ---------- */
 .person-row {
   display: flex;
