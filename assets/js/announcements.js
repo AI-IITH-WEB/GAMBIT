@@ -25,7 +25,7 @@ window.GAMBIT_ANNOUNCEMENTS = [
   {
     date: 'Aug 2026',
     tag: 'Preprint',
-    title: 'New preprint: Resourced Authority — A Mechanism-Design Model for Participatory Governance of Deployed AI Agents',
+    title: 'Resourced Authority — A Mechanism-Design Model for Participatory Governance of Deployed AI Agents',
     text: 'By Praphul Chandra, Sujit Gujar and Ganesh Ghalme.',
     link: 'https://arxiv.org/abs/2608.06353',
     linkText: 'Read on arXiv'
@@ -41,7 +41,7 @@ window.GAMBIT_ANNOUNCEMENTS = [
   {
     date: 'Jul 2026',
     tag: 'Preprint',
-    title: 'New preprint: Multi-Sender Bayesian Persuasion with Imperfect Information',
+    title: 'Multi-Sender Bayesian Persuasion with Imperfect Information',
     text: 'By Andra Siva Sai Teja, Ganesh Ghalme and Sujit Gujar.',
     link: 'https://arxiv.org/abs/2607.08675',
     linkText: 'Read on arXiv'
@@ -55,7 +55,7 @@ window.GAMBIT_ANNOUNCEMENTS = [
   {
     date: 'Jun 2026',
     tag: 'Preprint',
-    title: 'New preprint: Linear Strategic Classification with Endogenous Improvements',
+    title: 'Linear Strategic Classification with Endogenous Improvements',
     text: 'By Siddharth Shrivastava, Mahvith Akshintala, B. Vamsha Vardhan Reddy, Naresh Manwani, Sujit Gujar and Ganesh Ghalme.',
     link: 'https://arxiv.org/abs/2606.01198',
     linkText: 'Read on arXiv'

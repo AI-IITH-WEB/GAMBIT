@@ -1911,3 +1911,380 @@ a.person-row:hover .person-row-cta i {
     animation-duration: 0.01ms !important;
   }
 }
+
+/* ===================================================================
+   Readability pass (WCAG 2.2 + common web typography guidance):
+   body text ~16px, labels >= 13px, line-height >= 1.5 for running text,
+   lines <= ~75 characters, no long centred paragraphs, touch targets
+   >= 24px, visible keyboard focus.
+   =================================================================== */
+
+/* Header wordmark is a span (one h1 per page), keep its look */
+.header .logo .sitename {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1;
+}
+
+@media (max-width: 480px) {
+  .header .logo .sitename {
+    font-size: 24px;
+  }
+}
+
+.learning-section .heading-large {
+  margin-bottom: 0.5rem;
+}
+
+/* Visible keyboard focus everywhere */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible {
+  outline: 3px solid rgba(47, 50, 125, 0.55);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.footer a:focus-visible {
+  outline-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Labels and chips: 13px minimum */
+.supervisor-tags span,
+.supervisor-section.compact .supervisor-tags span,
+.person-tags span,
+.person-role,
+.person-field-name,
+.ann-tag,
+.rg-tag,
+.publication-venue {
+  font-size: 13px;
+}
+
+/* Running text: ~16px, comfortable measure */
+.supervisor-detail p.bio {
+  font-size: 16px;
+  line-height: 1.75;
+  max-width: 70ch;
+}
+
+.learning-section .subheading {
+  max-width: 62ch;
+}
+
+@media (min-width: 992px) {
+  .learning-section .subheading {
+    font-size: 1.25rem;
+  }
+}
+
+.about-subheading {
+  text-align: left;
+  max-width: 68ch;
+}
+
+.service-subheading {
+  text-align: left;
+  font-size: 1.05rem;
+}
+
+.rg-intro p {
+  max-width: 68ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.publication-item h5 {
+  line-height: 1.45;
+}
+
+.publication-authors {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Announcements */
+.supervisor-section + .announcements-section {
+  padding-top: 0;
+}
+
+.ann-item {
+  padding: 24px 0;
+}
+
+.ann-body {
+  max-width: 72ch;
+}
+
+.ann-date {
+  font-size: 15px;
+}
+
+.ann-tag {
+  margin-bottom: 8px;
+}
+
+.ann-title {
+  font-size: 18px;
+  line-height: 1.45;
+  margin-bottom: 6px;
+}
+
+.ann-text {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.ann-link {
+  font-size: 15px;
+}
+
+@media (max-width: 767px) {
+  .ann-title {
+    font-size: 17px;
+  }
+
+  .ann-item {
+    padding: 20px 0;
+  }
+}
+
+/* Touch targets: at least 24px tall */
+.footer-menu a,
+.ann-link,
+.rg-link,
+.publication-link,
+.supervisor-links a,
+.person-row-cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+}
+
+.footer-menu a {
+  padding: 4px 2px;
+}
+
+/* Reading Group: paper descriptions and session/part chips */
+.rg-desc {
+  color: var(--tertiary);
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 72ch;
+  margin: 10px 0 0;
+}
+
+.rg-tag-plain {
+  background: #fff;
+  border: 1px solid #D6DBF5;
+  color: var(--quaternary);
+}
+
+.rg-paper-meta {
+  font-size: 15px;
+}
+
+/* ---------- Reading Group: past sessions table ---------- */
+.rg-table-wrap {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(38, 45, 118, 0.10);
+  overflow: hidden;
+}
+
+.rg-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.rg-table thead th {
+  background: #EEF0FA;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 14px 20px;
+  white-space: nowrap;
+}
+
+.rg-table td {
+  padding: 18px 20px;
+  vertical-align: top;
+  color: var(--tertiary);
+  line-height: 1.55;
+}
+
+.rg-table tbody tr + tr td {
+  border-top: 1px solid #E6E8F3;
+}
+
+.rg-table tbody tr:hover td {
+  background: #FAFAFE;
+}
+
+.rg-td-date {
+  width: 150px;
+}
+
+.rg-row-date {
+  display: block;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 14.5px;
+}
+
+.rg-row-note {
+  display: inline-block;
+  margin-top: 6px;
+  margin-right: 4px;
+  font-size: 13px;
+  color: var(--quaternary);
+  border: 1px solid #D6DBF5;
+  border-radius: 999px;
+  padding: 1px 9px;
+}
+
+.rg-row-title {
+  display: inline;
+  font-weight: 600;
+  font-size: 16.5px;
+  color: var(--tertiary);
+  line-height: 1.45;
+}
+
+a.rg-row-title {
+  text-decoration: underline;
+  text-decoration-color: #C9CDEA;
+  text-underline-offset: 3px;
+}
+
+a.rg-row-title:hover {
+  color: var(--primary);
+  text-decoration-color: currentColor;
+}
+
+.rg-row-meta {
+  color: var(--quaternary);
+  font-size: 14.5px;
+  margin: 4px 0 0;
+}
+
+.rg-details {
+  margin-top: 8px;
+}
+
+.rg-details summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  cursor: pointer;
+  color: var(--secondary);
+  font-weight: 700;
+  font-size: 14px;
+  list-style: none;
+}
+
+.rg-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.rg-details summary::before {
+  content: '\25B8';
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.rg-details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.rg-details .rg-desc {
+  margin-top: 4px;
+}
+
+.rg-details .rg-link {
+  margin-top: 8px;
+}
+
+.rg-td-presenter {
+  width: 190px;
+  font-weight: 600;
+}
+
+.rg-td-theme {
+  width: 210px;
+}
+
+.rg-td-theme .rg-tags {
+  margin: 0;
+}
+
+.rg-empty-row td {
+  color: var(--quaternary);
+  font-style: italic;
+}
+
+/* Tablet: theme moves under presenter to give the paper column room */
+@media (max-width: 991px) {
+  .rg-td-presenter,
+  .rg-td-theme {
+    width: 170px;
+  }
+}
+
+/* Phones: each row becomes a labelled card */
+@media (max-width: 767px) {
+  .rg-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .rg-table,
+  .rg-table tbody,
+  .rg-table tr,
+  .rg-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .rg-table tbody tr {
+    padding: 16px 18px;
+  }
+
+  .rg-table tbody tr + tr {
+    border-top: 1px solid #E6E8F3;
+  }
+
+  .rg-table tbody tr + tr td {
+    border-top: 0;
+  }
+
+  .rg-table td {
+    padding: 0;
+  }
+
+  .rg-table td + td {
+    margin-top: 10px;
+  }
+
+  .rg-table td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    color: var(--secondary);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .rg-table tbody tr:hover td {
+    background: transparent;
+  }
+}

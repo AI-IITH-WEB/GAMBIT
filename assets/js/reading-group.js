@@ -7,13 +7,16 @@
    "Up next"; earlier ones move to "Past sessions" automatically.
 
      {
-       date: '2026-10-16',            // YYYY-MM-DD (required)
+       date: '2026-10-16',            // YYYY-MM-DD of the (first) session (required)
+       weeks: 1,                      // optional: number of weekly sessions the paper took
+       part: 'Part 1',                // optional: for a paper still in progress
        theme: 'md',                   // id from `themes` below; use ['md', 'info'] for several
        title: 'Paper title',          // required
        authors: 'A. Author, B. Author',
        venue: 'EC 2024',              // conference / journal / arXiv
        link: 'https://arxiv.org/abs/...',
        presenter: 'Presenter name',
+       description: 'Two or three sentences on what the paper does.',
        slides: 'https://...',         // optional, add after the session
        notes: 'One-line takeaway or discussion question'   // optional
      },
@@ -47,7 +50,39 @@ window.GAMBIT_READING_GROUP = {
   ],
 
   sessions: [
-    // Add sessions here (see the template at the top of this file).
+    {
+      date: '2026-10-13',
+      part: 'Part 1',
+      theme: 'info',
+      title: 'Strategic Information Transmission',
+      authors: 'Vincent P. Crawford, Joel Sobel',
+      venue: 'Econometrica, 1982',
+      link: 'https://www.jstor.org/stable/1913390',
+      presenter: 'Kush Mathukiya',
+      description: 'The foundational cheap-talk model: an informed sender advises a receiver whose interests differ. Every equilibrium partitions the state space, so the sender reveals only coarse information, and less is communicated the more their preferences diverge.'
+    },
+    {
+      date: '2026-09-29',
+      weeks: 2,
+      theme: ['info', 'fin'],
+      title: 'Information, Trade and Common Knowledge',
+      authors: 'Paul Milgrom, Nancy Stokey',
+      venue: 'Journal of Economic Theory, 1982',
+      link: 'https://web.stanford.edu/~milgrom/publishedarticles/Information%20Trade%20and%20Common%20Knowledge.pdf',
+      presenter: 'Kush Mathukiya',
+      description: 'The no-trade theorem: when traders share a common prior and a trade is common knowledge, differences in private information alone cannot create a motive for speculative trade.'
+    },
+    {
+      date: '2026-09-15',
+      weeks: 2,
+      theme: 'gt',
+      title: 'Strategic Classification with Externalities',
+      authors: 'Safwan Hossain, Evi Micha, Yiling Chen, Ariel Procaccia',
+      venue: 'arXiv 2024',
+      link: 'https://arxiv.org/pdf/2410.08032',
+      presenter: 'Siddharth Shrivastava',
+      description: 'Extends strategic classification to settings where one agent\u2019s manipulation affects others. The learner\u2013agent interaction is a Stackelberg game; under mild assumptions the agents\u2019 game has a unique, efficiently computable pure Nash equilibrium, which yields PAC learning guarantees and gradient-based training of classifiers.'
+    },
   ]
 };
 
@@ -102,6 +137,21 @@ window.GAMBIT_READING_GROUP = {
     return DAYS[d.getDay()] + ', ' + d.getDate() + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear();
   }
 
+  // "15 \u2013 22 Sep 2026" / "29 Sep \u2013 6 Oct 2026" for multi-week papers
+  function formatRange(a, b) {
+    if (a.getTime() === b.getTime()) return formatDate(a);
+    const end = b.getDate() + ' ' + MONTHS[b.getMonth()] + ' ' + b.getFullYear();
+    if (a.getFullYear() !== b.getFullYear()) return a.getDate() + ' ' + MONTHS[a.getMonth()] + ' ' + a.getFullYear() + ' \u2013 ' + end;
+    if (a.getMonth() !== b.getMonth()) return a.getDate() + ' ' + MONTHS[a.getMonth()] + ' \u2013 ' + end;
+    return a.getDate() + ' \u2013 ' + end;
+  }
+
+  function addDays(d, n) {
+    const x = new Date(d);
+    x.setDate(x.getDate() + n);
+    return x;
+  }
+
   function themeIds(s) {
     return (Array.isArray(s.theme) ? s.theme : [s.theme]).filter(id => themeById[id]);
   }
@@ -110,14 +160,31 @@ window.GAMBIT_READING_GROUP = {
   today.setHours(0, 0, 0, 0);
 
   const sessions = (data.sessions || [])
-    .map(s => Object.assign({}, s, { _date: parseDate(s.date), _themes: themeIds(s) }))
+    .map(s => {
+      const start = parseDate(s.date);
+      const weeks = Math.max(1, parseInt(s.weeks, 10) || 1);
+      return Object.assign({}, s, {
+        _date: start,
+        _end: start && addDays(start, 7 * (weeks - 1)),
+        _weeks: weeks,
+        _themes: themeIds(s)
+      });
+    })
     .filter(s => s._date && s.title);
-  const upcoming = sessions.filter(s => s._date >= today).sort((a, b) => a._date - b._date);
-  const past = sessions.filter(s => s._date < today).sort((a, b) => b._date - a._date);
+  // A paper stays "Up next" until its last session has passed.
+  const upcoming = sessions.filter(s => s._end >= today).sort((a, b) => a._date - b._date);
+  const past = sessions.filter(s => s._end < today).sort((a, b) => b._end - a._end);
+
+  function whenLabel(s) {
+    if (s._weeks === 1 && s._date.getTime() === today.getTime()) return 'Today \u00b7 ' + formatDate(s._date);
+    return formatRange(s._date, s._end);
+  }
 
   function themeTags(s) {
     const wrap = el('div', 'rg-tags');
     s._themes.forEach(id => wrap.appendChild(el('span', 'rg-tag rg-tag-' + id, themeById[id].name)));
+    if (s._weeks > 1) wrap.appendChild(el('span', 'rg-tag rg-tag-plain', s._weeks + ' sessions'));
+    if (s.part) wrap.appendChild(el('span', 'rg-tag rg-tag-plain', s.part));
     return wrap;
   }
 
@@ -127,6 +194,7 @@ window.GAMBIT_READING_GROUP = {
     frag.appendChild(el(titleTag, 'rg-title', s.title));
     const by = [s.authors, s.venue].filter(Boolean).join(' · ');
     if (by) frag.appendChild(el('p', 'rg-paper-meta', by));
+    if (s.description) frag.appendChild(el('p', 'rg-desc', s.description));
     if (s.notes) frag.appendChild(el('p', 'rg-notes', s.notes));
 
     const foot = el('div', 'rg-foot');
@@ -169,7 +237,7 @@ window.GAMBIT_READING_GROUP = {
       when.appendChild(el('span', 'rg-next-month', MONTHS[first._date.getMonth()] + ' ' + first._date.getFullYear()));
       card.appendChild(when);
       const body = el('div', 'rg-next-body');
-      body.appendChild(el('div', 'rg-next-label', formatDate(first._date)));
+      body.appendChild(el('div', 'rg-next-label', whenLabel(first)));
       body.appendChild(paperBlock(first, 'h3'));
       card.appendChild(body);
       next.appendChild(card);
@@ -191,11 +259,55 @@ window.GAMBIT_READING_GROUP = {
   function sessionItem(s) {
     const li = el('li', 'rg-item');
     li.dataset.themes = s._themes.join(' ');
-    li.appendChild(el('div', 'rg-item-date', formatDate(s._date)));
+    li.appendChild(el('div', 'rg-item-date', whenLabel(s)));
     const body = el('div', 'rg-item-body');
     body.appendChild(paperBlock(s, 'h5'));
     li.appendChild(body);
     return li;
+  }
+
+  /* --- Past sessions table: Date | Paper | Presenter | Theme --- */
+  function cell(className, label) {
+    const td = el('td', className);
+    if (label) td.dataset.label = label;
+    return td;
+  }
+
+  function sessionRow(s) {
+    const tr = el('tr', 'rg-row');
+    tr.dataset.themes = s._themes.join(' ');
+
+    const date = cell('rg-td-date');
+    date.appendChild(el('span', 'rg-row-date', whenLabel(s)));
+    if (s._weeks > 1) date.appendChild(el('span', 'rg-row-note', s._weeks + ' sessions'));
+    if (s.part) date.appendChild(el('span', 'rg-row-note', s.part));
+    tr.appendChild(date);
+
+    const paper = cell('rg-td-paper');
+    const url = safeHref(s.link);
+    const title = url ? link(url, s.title, 'rg-row-title') : el('span', 'rg-row-title', s.title);
+    paper.appendChild(title);
+    const by = [s.authors, s.venue].filter(Boolean).join(' \u00b7 ');
+    if (by) paper.appendChild(el('p', 'rg-row-meta', by));
+    if (s.description || s.notes || s.slides) {
+      const details = el('details', 'rg-details');
+      details.appendChild(el('summary', '', 'Summary'));
+      if (s.description) details.appendChild(el('p', 'rg-desc', s.description));
+      if (s.notes) details.appendChild(el('p', 'rg-notes', s.notes));
+      const slides = link(s.slides, 'Slides', 'rg-link', 'fa-person-chalkboard');
+      if (slides) details.appendChild(slides);
+      paper.appendChild(details);
+    }
+    tr.appendChild(paper);
+
+    tr.appendChild(cell('rg-td-presenter', 'Presenter')).textContent = s.presenter || '\u2014';
+
+    const theme = cell('rg-td-theme', 'Theme');
+    const tags = el('div', 'rg-tags');
+    s._themes.forEach(id => tags.appendChild(el('span', 'rg-tag rg-tag-' + id, themeById[id].name)));
+    theme.appendChild(tags);
+    tr.appendChild(theme);
+    return tr;
   }
 
   /* --- Past sessions with theme filter --- */
@@ -204,14 +316,17 @@ window.GAMBIT_READING_GROUP = {
   let applyFilter = () => {};
 
   if (pastList) {
-    past.forEach(s => pastList.appendChild(sessionItem(s)));
-    const none = el('li', 'rg-empty-row', past.length ? 'No past sessions on this theme yet.' : 'Past sessions will be listed here.');
+    past.forEach(s => pastList.appendChild(sessionRow(s)));
+    const none = el('tr', 'rg-empty-row');
+    const noneCell = el('td', '', past.length ? 'No past sessions on this theme yet.' : 'Past sessions will be listed here.');
+    noneCell.colSpan = 4;
+    none.appendChild(noneCell);
     none.hidden = past.length > 0;
     pastList.appendChild(none);
 
     applyFilter = id => {
       let shown = 0;
-      pastList.querySelectorAll('.rg-item').forEach(li => {
+      pastList.querySelectorAll('.rg-row').forEach(li => {
         const match = id === 'all' || li.dataset.themes.split(' ').includes(id);
         li.hidden = !match;
         if (match) shown++;
@@ -238,7 +353,6 @@ window.GAMBIT_READING_GROUP = {
   const themeGrid = document.getElementById('rg-themes');
   if (themeGrid) {
     themes.forEach(t => {
-      const count = past.filter(s => s._themes.includes(t.id)).length;
       const card = el('button', 'rg-theme rg-theme-' + t.id);
       card.type = 'button';
       card.setAttribute('aria-label', t.name + ': show past sessions');
@@ -247,7 +361,6 @@ window.GAMBIT_READING_GROUP = {
       card.appendChild(ic);
       card.appendChild(el('span', 'rg-theme-name', t.name));
       card.appendChild(el('span', 'rg-theme-blurb', t.blurb));
-      if (count) card.appendChild(el('span', 'rg-theme-count', count === 1 ? '1 session' : count + ' sessions'));
       card.addEventListener('click', () => {
         applyFilter(t.id);
         const target = document.getElementById('rg-archive');
