@@ -27,11 +27,27 @@
   const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
 
   function mobileNavToogle() {
-    document.querySelector('body').classList.toggle('mobile-nav-active');
-    mobileNavToggleBtn.classList.toggle('fa-list');
-    mobileNavToggleBtn.classList.toggle('fa-x');
+    const isOpen = document.querySelector('body').classList.toggle('mobile-nav-active');
+    mobileNavToggleBtn.classList.toggle('fa-bars', !isOpen);
+    mobileNavToggleBtn.classList.toggle('fa-xmark', isOpen);
+    mobileNavToggleBtn.setAttribute('aria-expanded', isOpen);
   }
   mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
+  mobileNavToggleBtn.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      mobileNavToogle();
+    }
+  });
+
+  /**
+   * Close the mobile nav when tapping the dimmed backdrop
+   */
+  document.querySelector('#navmenu').addEventListener('click', e => {
+    if (e.target.id === 'navmenu' && document.querySelector('.mobile-nav-active')) {
+      mobileNavToogle();
+    }
+  });
 
   /**
    * Hide mobile nav on same-page/hash links

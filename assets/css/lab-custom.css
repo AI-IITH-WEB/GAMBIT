@@ -491,17 +491,8 @@ body {
   border-radius: 0;
 }
 
-.header .container-fluid {
-  padding-left: 0;
-}
-
-.header .logo {
-  margin-left: -24px;
-}
-
-.header .navmenu {
-  margin-right: -36px;
-}
+/* Logo/nav sit on the normal container gutters; the old negative offsets pushed
+   the logo and the mobile menu button off-screen on phones and tablets. */
 
 /* ---------- Sub-page title banner (multipage nav needs a header banner Mindhaven's single-page skeleton never had) ---------- */
 .page-head {
@@ -518,7 +509,8 @@ body {
 
 /* ---------- Dedicated supervisor section (own section right after hero) ---------- */
 .supervisor-section {
-  padding: 80px 0;
+  padding-top: 80px;
+  padding-bottom: 80px;
 }
 
 .supervisor-photo-box {
@@ -588,7 +580,8 @@ body {
 
 /* ---------- Compact supervisor block (People page only; section heading is untouched) ---------- */
 .supervisor-section.compact {
-  padding: 16px 0 8px 0;
+  padding-top: 16px;
+  padding-bottom: 8px;
 }
 
 .supervisor-section.compact .supervisor-photo-box {
@@ -601,7 +594,8 @@ body {
 }
 
 .supervisor-section.compact .supervisor-detail h6 {
-  font-size: 12px;
+  font-size: 13.5px;
+  line-height: 1.5;
   margin-bottom: 12px;
 }
 
@@ -610,8 +604,8 @@ body {
 }
 
 .supervisor-section.compact .supervisor-tags span {
-  font-size: 11px;
-  padding: 4px 10px;
+  font-size: 12.5px;
+  padding: 5px 12px;
 }
 
 .supervisor-section.compact .supervisor-detail p.bio {
@@ -654,14 +648,679 @@ body {
   font-weight: 600;
 }
 
+/* ---------- Readability ---------- */
+:root {
+  /* Slightly darker body-text grey: the template's #696984 sits near the
+     4.5:1 contrast floor on the tinted page background. */
+  --quaternary: #55556E;
+}
+
+/* AOS slide-in animations offset content sideways; never let that create
+   a horizontal scrollbar on phones. */
+body {
+  overflow-x: hidden;
+}
+
+@supports (overflow-x: clip) {
+  body {
+    overflow-x: clip;
+  }
+}
+
+.text-quaternary {
+  color: var(--quaternary);
+}
+
+body {
+  color: var(--tertiary);
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.learning-section .heading-large {
+  color: var(--primary);
+}
+
+.learning-section .subheading {
+  color: var(--tertiary);
+  line-height: 1.6;
+  margin: 1rem auto 2rem;
+}
+
+@media (min-width: 768px) {
+  .learning-section .subheading {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .learning-section .subheading {
+    font-size: 1.35rem;
+  }
+}
+
+.about-subheading,
+.service-subheading,
+.card-text,
+.text-quaternary {
+  line-height: 1.75;
+}
+
+.about-subheading {
+  max-width: 72ch;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+}
+
+.more-btn {
+  display: inline-block;
+}
+
+.person-card .person-degree,
+.person-card .person-field-label,
+.person-card .person-field-value,
+.person-card .person-pending {
+  font-size: 13.5px;
+}
+
+/* ---------- People page: readability pass ---------- */
+.people-jump {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.people-jump a {
+  color: var(--primary);
+  background: #fff;
+  border: 1.5px solid #D6DBF5;
+  border-radius: 999px;
+  padding: 7px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.people-jump a:hover,
+.people-jump a:focus {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+#supervisor,
+#current-students,
+#alumni {
+  scroll-margin-top: 100px;
+}
+
+.supervisor-inline {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  max-width: 900px;
+  margin: 18px auto 0;
+}
+
+.supervisor-section.compact .supervisor-inline .supervisor-photo-box {
+  flex: 0 0 190px;
+  max-width: 190px;
+  margin: 0;
+}
+
+.supervisor-section.compact .supervisor-photo-box img {
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(47, 50, 125, 0.2);
+}
+
+.supervisor-section.compact .supervisor-detail h2 {
+  font-size: 24px;
+}
+
+.supervisor-section.compact .supervisor-links a {
+  font-size: 13px;
+}
+
+.people-block-heading h2 {
+  font-size: 30px;
+}
+
+.person-card {
+  max-width: 260px;
+}
+
+.person-card .person-avatar {
+  width: 124px;
+  height: 124px;
+}
+
+.person-card .person-field-label {
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 10px;
+}
+
+/* Pin the button to the card bottom so buttons line up across a row. */
+.person-card .person-actions {
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+.person-card .person-link,
+.person-card .person-pending {
+  margin-top: 0;
+}
+
+.person-card .person-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.person-card .person-now {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  text-align: left;
+  background: #F6EEF3;
+  color: var(--secondary);
+  border-radius: 10px;
+  padding: 8px 12px;
+  margin: 4px 0 2px;
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.person-card .person-now i {
+  margin-top: 3px;
+}
+
+/* ---------- People page: horizontal profile cards (whole card is the link) ---------- */
+.person-row {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  background: #fff;
+  border-radius: 16px;
+  border-left: 5px solid var(--primary);
+  box-shadow: 0 8px 24px rgba(38, 45, 118, 0.10);
+  padding: 20px 22px;
+  height: calc(100% - 22px);
+  margin-bottom: 22px;
+  color: var(--tertiary);
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+a.person-row:hover,
+a.person-row:focus-visible {
+  color: var(--tertiary);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(47, 50, 125, 0.18);
+  border-left-color: var(--secondary);
+}
+
+a.person-row:focus-visible {
+  outline: 3px solid rgba(47, 50, 125, 0.35);
+  outline-offset: 2px;
+}
+
+.person-row-photo {
+  flex: 0 0 104px;
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--primary) 0%, #4d51b8 100%);
+  color: #fff;
+  font-size: 40px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(47, 50, 125, 0.2);
+}
+
+.person-row-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+.person-row-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.person-row-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+}
+
+.person-row-head h5 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--tertiary);
+  margin: 0;
+}
+
+.person-role {
+  background: #E4E7F8;
+  color: var(--primary);
+  font-size: 12.5px;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+
+.person-field {
+  margin-top: 10px;
+}
+
+.person-field-name {
+  display: block;
+  color: var(--secondary);
+  font-size: 12.5px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.person-row .person-field .person-tags,
+.person-row .person-field .person-now {
+  margin-top: 0;
+}
+
+.person-field-pending {
+  color: var(--quaternary);
+  font-size: 13.5px;
+  font-style: italic;
+}
+
+.person-dates {
+  color: var(--quaternary);
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.person-row .person-now {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: #F6EEF3;
+  color: var(--secondary);
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin-top: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.person-row .person-now i {
+  margin-top: 3px;
+}
+
+.person-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.person-tags span {
+  background: #EEF0FA;
+  color: var(--primary);
+  font-size: 12.5px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 4px 10px;
+  line-height: 1.4;
+}
+
+.person-row-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.person-row-cta i {
+  font-size: 12px;
+  transition: transform 0.25s ease;
+}
+
+a.person-row:hover .person-row-cta {
+  color: var(--secondary);
+}
+
+a.person-row:hover .person-row-cta i {
+  transform: translateX(4px);
+}
+
+.person-row-pending {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--quaternary);
+  font-size: 13.5px;
+  font-style: italic;
+}
+
+@media (max-width: 575px) {
+  .person-row {
+    gap: 16px;
+    padding: 16px;
+    align-items: flex-start;
+  }
+
+  .person-row-photo {
+    flex-basis: 76px;
+    width: 76px;
+    height: 76px;
+    font-size: 30px;
+  }
+
+  .person-row-head h5 {
+    font-size: 16.5px;
+  }
+}
+
+@media (hover: none) {
+  a.person-row:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .supervisor-inline {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .supervisor-section.compact .supervisor-inline .supervisor-photo-box {
+    flex-basis: auto;
+    max-width: 170px;
+  }
+
+  .people-block-heading h2 {
+    font-size: 26px;
+  }
+}
+
+.publication-venue {
+  color: #13134a;
+}
+
+.our-feature-class-room li {
+  align-items: center;
+}
+
+.our-feature-class-room .icon-item {
+  flex-shrink: 0;
+}
+
+/* Footer: the template's hover colour was dark plum on dark navy (invisible). */
+.footer-menu li a:hover,
+.footer-menu li a:focus {
+  color: #F4C9E0;
+  text-decoration: underline;
+}
+
+.footer-sub-title {
+  line-height: 1.6;
+}
+
+/* ---------- Navigation ---------- */
+.mobile-nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+}
+
+/* 1200-1399px: nine links + logo only just fit the 1140px container, so tighten them. */
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .navmenu a,
+  .navmenu a:focus {
+    padding: 18px 11px;
+    font-size: 15px;
+  }
+
+  .navmenu > ul > li > a::after {
+    left: 11px;
+    right: 11px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .mobile-nav-toggle {
+    margin-right: 0;
+  }
+
+  /* Size the open menu to its content instead of a full-height white sheet. */
+  .navmenu ul {
+    inset: 76px 16px auto 16px;
+    max-height: calc(100vh - 96px);
+    padding: 8px 0;
+  }
+
+  .navmenu a,
+  .navmenu a:focus {
+    padding: 12px 20px;
+  }
+
+  .navmenu > ul > li > a::after {
+    display: none;
+  }
+
+  .navmenu > ul > li:hover > a {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .navmenu .active,
+  .navmenu .active:focus {
+    background-color: rgba(76, 29, 61, 0.08);
+  }
+
+  .navmenu .active i,
+  .navmenu .active:focus i {
+    transform: none;
+  }
+
+  .mobile-nav-active .mobile-nav-toggle {
+    top: 26px;
+    right: 16px;
+    font-size: 28px;
+  }
+}
+
 /* ---------- Responsive ---------- */
+@media (max-width: 991px) {
+  .header-section {
+    padding-bottom: 40px;
+  }
+
+  .mt-7 {
+    margin-top: 4rem;
+  }
+
+  .supervisor-section {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+}
+
 @media (max-width: 767px) {
   .hero-photo-box {
     margin: 0 auto;
   }
 
+  .header {
+    height: 4.5rem;
+    padding: 12px 0;
+  }
+
+  .pt-6 {
+    margin-top: 4.5rem;
+  }
+
+  .header-section {
+    padding-bottom: 24px;
+  }
+
+  .hero-section .learning-section {
+    padding-top: 1rem !important;
+  }
+
+  .mt-7 {
+    margin-top: 2.5rem;
+  }
+
+  .supervisor-section {
+    padding-top: 40px;
+    padding-bottom: 32px;
+  }
+
+  .supervisor-photo-box {
+    max-width: 260px;
+  }
+
+  .supervisor-section.compact .supervisor-photo-box {
+    max-width: 220px;
+  }
+
   .supervisor-detail {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 10px;
+  }
+
+  .supervisor-detail h2 {
+    font-size: 24px;
+  }
+
+  .supervisor-detail p.bio {
+    text-align: left;
+  }
+
+  .supervisor-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 20px;
+  }
+
+  .supervisor-links a {
+    margin: 0;
+  }
+
+  .page-head h1 {
+    font-size: 28px;
+  }
+
+  .people-group-title,
+  .publication-year-title {
+    font-size: 20px;
+  }
+
+  .about-title,
+  .our-feature-title {
+    font-size: 1.6rem;
+  }
+
+  .about-subheading {
+    font-size: 1rem;
+    text-align: left;
+  }
+
+  .publication-item {
+    padding: 18px 18px;
+  }
+
+  .publication-item h5 {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .our-feature-sub-title {
+    font-size: 1.5rem;
+  }
+
+  .feature-art {
+    min-height: 180px;
+  }
+
+  .feature-text-card {
+    min-height: 0;
+    padding: 26px 22px;
+  }
+
+  .service-section .row.mx-2 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .service-section .px-4 {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .map-embed iframe {
+    height: 240px;
+  }
+
+  .footer {
+    padding: 32px 0;
+  }
+
+  .footer h5 {
+    font-size: 1.6rem;
+  }
+
+  .footer .mt-5 {
+    margin-top: 1.75rem !important;
+  }
+
+  .footer-menu {
+    gap: 0.5rem !important;
+  }
+
+  .footer-menu li {
+    margin-right: 0 !important;
+  }
+}
+
+/* Hover lift effects are pointless (and can stick) on touch screens. */
+@media (hover: none) {
+  .person-card:hover,
+  .publication-item:hover,
+  .service-item:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
 }

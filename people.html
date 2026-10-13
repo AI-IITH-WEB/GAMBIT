@@ -34,24 +34,27 @@
                   <li><a href="resources.html">Resources</a></li>
                   <li><a href="contact.html">Contact</a></li>
                 </ul>
-                <i class="mobile-nav-toggle d-xl-none fas fa-bars"></i>
+                <i class="mobile-nav-toggle d-xl-none fas fa-bars" role="button" tabindex="0" aria-label="Toggle navigation" aria-controls="navmenu" aria-expanded="false"></i>
               </nav>
             </div>
           </header>
           <div class="page-head container-fluid container-xl pt-6">
             <h1>People</h1>
+            <nav class="people-jump" aria-label="People sections">
+              <a href="#supervisor">Supervisor</a>
+              <a href="#current-students">Current Students</a>
+              <a href="#alumni">Alumni</a>
+            </nav>
           </div>
        </div>
 
         <div class="supervisor-section compact container-fluid container-xl position-relative" id="supervisor" data-aos="fade-up">
           <h4 class="people-group-title">Lab Supervisor</h4>
-          <div class="row justify-content-center text-center">
-            <div class="col-12 mb-4">
-              <div class="supervisor-photo-box">
-                <img src="./assets/images/ganesh-ghalme.jpg" alt="Dr. Ganesh Ghalme">
-              </div>
+          <div class="supervisor-inline">
+            <div class="supervisor-photo-box">
+              <img src="./assets/images/ganesh-ghalme.jpg" alt="Dr. Ganesh Ghalme">
             </div>
-            <div class="col-md-8 supervisor-detail">
+            <div class="supervisor-detail">
               <h2>Dr. Ganesh Ghalme</h2>
               <h6>Assistant Professor, Department of Artificial Intelligence, Indian Institute of Technology Hyderabad</h6>
               <div class="supervisor-tags">
@@ -59,6 +62,11 @@
                 <span>Mechanism Design</span>
                 <span>Fairness in Machine Learning</span>
                 <span>Multi-armed Bandits</span>
+              </div>
+              <div class="supervisor-links">
+                <a href="https://iith.ac.in/ai/ganeshghalme/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-building-columns"></i>Faculty Profile</a>
+                <a href="https://sites.google.com/view/ganeshghalme/home" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i>Personal Website</a>
+                <a href="https://scholar.google.co.in/citations?user=3WtQCqYAAAAJ&hl=en" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-google-scholar"></i>Google Scholar</a>
               </div>
             </div>
           </div>
@@ -72,57 +80,53 @@
 
             <h4 class="people-group-title">PhD Students</h4>
             <div class="row">
-              <div class="col-md-6">
-                <div class="person-card">
-                  <div class="person-card-top"><div class="person-avatar"><img src="./assets/images/siddharth-shrivastava.jpeg" alt="Siddharth Shrivastava"></div></div>
-                  <div class="person-detail">
-                    <h5>Siddharth Shrivastava</h5>
-                    <div class="person-degree">PhD &middot; Jan 2024 &ndash; Now</div>
-                    <div class="person-field-label">Research Area:</div>
-                    <div class="person-field-value">Responsible Artificial Intelligence</div>
-                    <a class="person-link" href="https://siddharth-shrivastava7.github.io" target="_blank" rel="noopener noreferrer">Know More</a>
+              <div class="col-lg-6">
+                <a class="person-row" href="https://siddharth-shrivastava7.github.io" target="_blank" rel="noopener noreferrer" aria-label="Know more about Siddharth Shrivastava">
+                  <div class="person-row-photo"><img src="./assets/images/siddharth-shrivastava.jpeg" alt="Siddharth Shrivastava"></div>
+                  <div class="person-row-body">
+                    <div class="person-row-head"><h5>Siddharth Shrivastava</h5><span class="person-role">PhD</span></div>
+                    <div class="person-dates">Jan 2024 &ndash; Present</div>
+                    <div class="person-field"><span class="person-field-name">Research Area</span><div class="person-tags"><span>Responsible Artificial Intelligence</span></div></div>
+                    <span class="person-row-cta">Know More <i class="fa-solid fa-arrow-right"></i></span>
                   </div>
-                </div>
+                </a>
               </div>
-              <div class="col-md-6">
-                <div class="person-card">
-                  <div class="person-card-top"><div class="person-avatar"><img src="./assets/images/kush-mathukiya.jpeg" alt="Kush Mathukiya"></div></div>
-                  <div class="person-detail">
-                    <h5>Kush Mathukiya</h5>
-                    <div class="person-degree">PhD &middot; July 2025 &ndash; Now</div>
-                    <div class="person-field-label">Research Area:</div>
-                    <div class="person-field-value">To be updated</div>
-                    <span class="person-pending">Profile coming soon</span>
+              <div class="col-lg-6">
+                <a class="person-row" href="https://in.linkedin.com/in/kush-mathukiya-01434626b" target="_blank" rel="noopener noreferrer" aria-label="Know more about Kush Mathukiya">
+                  <div class="person-row-photo"><img src="./assets/images/kush-mathukiya.jpeg" alt="Kush Mathukiya"></div>
+                  <div class="person-row-body">
+                    <div class="person-row-head"><h5>Kush Mathukiya</h5><span class="person-role">PhD</span></div>
+                    <div class="person-dates">Jul 2025 &ndash; Present</div>
+                    <div class="person-field"><span class="person-field-name">Research Area</span><span class="person-field-pending">To be updated</span></div>
+                    <span class="person-row-cta">Know More <i class="fa-solid fa-arrow-right"></i></span>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
 
-            <h4 class="people-group-title">MTech Students</h4>
+            <h4 class="people-group-title">M.Tech Students</h4>
             <div class="row">
-              <div class="col-md-6">
-                <div class="person-card">
-                  <div class="person-card-top"><div class="person-avatar"><img src="./assets/images/vishnuhemanth-tiruvalluru.png" alt="Vishnuhemanth Tiruvalluru"></div></div>
-                  <div class="person-detail">
-                    <h5>Vishnuhemanth Tiruvalluru</h5>
-                    <div class="person-degree">MTech RA &middot; July 2024 &ndash; Now</div>
-                    <div class="person-field-label">Research Area:</div>
-                    <div class="person-field-value">Trustworthy AI for Finance</div>
-                    <a class="person-link" href="https://vishnuhemanth27.github.io" target="_blank" rel="noopener noreferrer">Know More</a>
+              <div class="col-lg-6">
+                <a class="person-row" href="https://vishnuhemanth27.github.io" target="_blank" rel="noopener noreferrer" aria-label="Know more about Vishnuhemanth Tiruvalluru">
+                  <div class="person-row-photo"><img src="./assets/images/vishnuhemanth-tiruvalluru.png" alt="Vishnuhemanth Tiruvalluru"></div>
+                  <div class="person-row-body">
+                    <div class="person-row-head"><h5>Vishnuhemanth Tiruvalluru</h5><span class="person-role">M.Tech RA</span></div>
+                    <div class="person-dates">Jul 2024 &ndash; Present</div>
+                    <div class="person-field"><span class="person-field-name">Research Area</span><div class="person-tags"><span>Trustworthy AI for Finance</span></div></div>
+                    <span class="person-row-cta">Know More <i class="fa-solid fa-arrow-right"></i></span>
                   </div>
-                </div>
+                </a>
               </div>
-              <div class="col-md-6">
-                <div class="person-card">
-                  <div class="person-card-top"><div class="person-avatar"><img src="./assets/images/sanvi-rikthik-reddy.jpeg" alt="V. Sanvi Rikthik Reddy"></div></div>
-                  <div class="person-detail">
-                    <h5>V. Sanvi Rikthik Reddy</h5>
-                    <div class="person-degree">MTech RA &middot; July 2026 &ndash; Now</div>
-                    <div class="person-field-label">Research Area:</div>
-                    <div class="person-field-value">To be updated</div>
-                    <a class="person-link" href="https://www.linkedin.com/in/sanvi-rikthik-reddy-463615288/" target="_blank" rel="noopener noreferrer">Know More</a>
+              <div class="col-lg-6">
+                <a class="person-row" href="https://www.linkedin.com/in/sanvi-rikthik-reddy-463615288/" target="_blank" rel="noopener noreferrer" aria-label="Know more about V. Sanvi Rikthik Reddy">
+                  <div class="person-row-photo"><img src="./assets/images/sanvi-rikthik-reddy.jpeg" alt="V. Sanvi Rikthik Reddy"></div>
+                  <div class="person-row-body">
+                    <div class="person-row-head"><h5>V. Sanvi Rikthik Reddy</h5><span class="person-role">M.Tech RA</span></div>
+                    <div class="person-dates">Jul 2026 &ndash; Present</div>
+                    <div class="person-field"><span class="person-field-name">Research Area</span><span class="person-field-pending">To be updated</span></div>
+                    <span class="person-row-cta">Know More <i class="fa-solid fa-arrow-right"></i></span>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
           </div>
@@ -134,57 +138,51 @@
               <h2>Alumni</h2>
             </div>
 
-            <h4 class="people-group-title">MTech Students</h4>
+            <h4 class="people-group-title">M.Tech Alumni</h4>
             <div class="row">
-              <div class="col-md-6">
-                <div class="person-card">
-                  <div class="person-card-top"><div class="person-avatar"><img src="./assets/images/siva-sai-teja.jpg" alt="Andra Siva Sai Teja"></div></div>
-                  <div class="person-detail">
-                    <h5>Andra Siva Sai Teja</h5>
-                    <div class="person-degree">MTech RA &middot; July 2022 &ndash; 2025</div>
-                    <div class="person-field-label">Research Area:</div>
-                    <div class="person-field-value">Multi-Arm Bandits, Bayesian Persuasion</div>
-                    <div class="person-field-label">Current Position:</div>
-                    <div class="person-field-value">Samsung R&amp;D Institute India, Bangalore</div>
-                    <a class="person-link" href="https://www.linkedin.com/in/andra-siva-sai-teja-229226193/" target="_blank" rel="noopener noreferrer">Know More</a>
+              <div class="col-lg-6">
+                <a class="person-row" href="https://www.linkedin.com/in/andra-siva-sai-teja-229226193/" target="_blank" rel="noopener noreferrer" aria-label="Know more about Andra Siva Sai Teja">
+                  <div class="person-row-photo"><img src="./assets/images/siva-sai-teja.jpg" alt="Andra Siva Sai Teja"></div>
+                  <div class="person-row-body">
+                    <div class="person-row-head"><h5>Andra Siva Sai Teja</h5><span class="person-role">M.Tech RA</span></div>
+                    <div class="person-dates">2022 &ndash; 2025</div>
+                    <div class="person-field"><span class="person-field-name">Research Area</span><div class="person-tags"><span>Multi-Arm Bandits</span><span>Bayesian Persuasion</span></div></div>
+                    <div class="person-field"><span class="person-field-name">Current Position</span><div class="person-now"><i class="fa-solid fa-briefcase"></i><span>Samsung R&amp;D Institute India, Bangalore</span></div></div>
+                    <span class="person-row-cta">Know More <i class="fa-solid fa-arrow-right"></i></span>
                   </div>
-                </div>
+                </a>
               </div>
-              <div class="col-md-6">
-                <div class="person-card">
-                  <div class="person-card-top"><div class="person-avatar"><img src="./assets/images/himanshu-sharma.jpg" alt="Himanshu"></div></div>
-                  <div class="person-detail">
-                    <h5>Himanshu</h5>
-                    <div class="person-degree">MTech RA &middot; July 2022 &ndash; 2025</div>
-                    <div class="person-field-label">Research Area:</div>
-                    <div class="person-field-value">Fairness, Multi Arm Bandits</div>
-                    <div class="person-field-label">Current Position:</div>
-                    <div class="person-field-value">TCS Research, Hyderabad</div>
-                    <a class="person-link" href="https://himanshu11a1.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Know More</a>
+              <div class="col-lg-6">
+                <a class="person-row" href="https://himanshu11a1.github.io/portfolio/" target="_blank" rel="noopener noreferrer" aria-label="Know more about Himanshu">
+                  <div class="person-row-photo"><img src="./assets/images/himanshu-sharma.jpg" alt="Himanshu"></div>
+                  <div class="person-row-body">
+                    <div class="person-row-head"><h5>Himanshu</h5><span class="person-role">M.Tech RA</span></div>
+                    <div class="person-dates">2022 &ndash; 2025</div>
+                    <div class="person-field"><span class="person-field-name">Research Area</span><div class="person-tags"><span>Fairness</span><span>Multi-Arm Bandits</span></div></div>
+                    <div class="person-field"><span class="person-field-name">Current Position</span><div class="person-now"><i class="fa-solid fa-briefcase"></i><span>TCS Research, Hyderabad</span></div></div>
+                    <span class="person-row-cta">Know More <i class="fa-solid fa-arrow-right"></i></span>
                   </div>
-                </div>
+                </a>
               </div>
-              <div class="col-md-6">
-                <div class="person-card">
-                  <div class="person-card-top"><div class="person-avatar"><img src="./assets/images/mahvith-akshintala.jpg" alt="Mahvith Akshintala"></div></div>
-                  <div class="person-detail">
-                    <h5>Mahvith Akshintala</h5>
-                    <div class="person-degree">MTech RA &middot; July 2023 &ndash; June 2026</div>
-                    <div class="person-field-label">Research Area:</div>
-                    <div class="person-field-value">Strategic AI, Small Language Models</div>
-                    <div class="person-field-label">Current Position:</div>
-                    <div class="person-field-value">Project Associate, Department of AI, IIT Hyderabad</div>
-                    <a class="person-link" href="https://www.linkedin.com/in/mahvith-akshintala-b425211a5/" target="_blank" rel="noopener noreferrer">Know More</a>
+              <div class="col-lg-6">
+                <a class="person-row" href="https://www.linkedin.com/in/mahvith-akshintala-b425211a5/" target="_blank" rel="noopener noreferrer" aria-label="Know more about Mahvith Akshintala">
+                  <div class="person-row-photo"><img src="./assets/images/mahvith-akshintala.jpg" alt="Mahvith Akshintala"></div>
+                  <div class="person-row-body">
+                    <div class="person-row-head"><h5>Mahvith Akshintala</h5><span class="person-role">M.Tech RA</span></div>
+                    <div class="person-dates">2023 &ndash; 2026</div>
+                    <div class="person-field"><span class="person-field-name">Research Area</span><div class="person-tags"><span>Strategic AI</span><span>Small Language Models</span></div></div>
+                    <div class="person-field"><span class="person-field-name">Current Position</span><div class="person-now"><i class="fa-solid fa-briefcase"></i><span>Project Associate, Department of AI, IIT Hyderabad</span></div></div>
+                    <span class="person-row-cta">Know More <i class="fa-solid fa-arrow-right"></i></span>
                   </div>
-                </div>
+                </a>
               </div>
-              <div class="col-md-6">
-                <div class="person-card">
-                  <div class="person-card-top"><div class="person-avatar"><i class="fa-solid fa-user"></i></div></div>
-                  <div class="person-detail">
-                    <h5>Adithyan</h5>
-                    <div class="person-degree">MTech &middot; July 2023 &ndash; 2025</div>
-                    <span class="person-pending">Profile coming soon</span>
+              <div class="col-lg-6">
+                <div class="person-row">
+                  <div class="person-row-photo"><span aria-hidden="true">A</span></div>
+                  <div class="person-row-body">
+                    <div class="person-row-head"><h5>Adithyan</h5><span class="person-role">M.Tech</span></div>
+                    <div class="person-dates">2023 &ndash; 2025</div>
+                    <span class="person-row-pending">Profile coming soon</span>
                   </div>
                 </div>
               </div>
